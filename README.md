@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Our team's UI application for SWE632 at GMU (Spring 2018). It is a quiz application.
 
-Things you may want to cover:
+* Primarily a Ruby on Rails application with some frontend JS frameworks and CSS
 
-* Ruby version
+* Requires Ruby 2.3.3 and Rails 5.1.4; MySQL as the DB backend
 
-* System dependencies
+* Database creation: Use the mysql_db_and_user_creation.sql script to setup the database
 
-* Configuration
-
-* Database creation
-
-* Database initialization
+* Database initialization: run "rake db:migrate"
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
