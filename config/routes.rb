@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :questions
   resources :quizzes
   devise_for :users
-  root to: "home#index"
+  root to: "quizzes#index"
 
 end
