@@ -56,6 +56,12 @@ div {
   display: table;
 }
 
+.field{
+  input, textarea{
+    width: 300px;
+  }
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -81,4 +87,10 @@ div {
 
 label {
   display: block;
+}
+
+.box{
+  border: black 1px solid;
+  padding: 4px;
+  display: inline-flex;
 }

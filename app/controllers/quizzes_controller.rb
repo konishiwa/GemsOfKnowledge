@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.user_quizzes(current_user.id)
   end
 
   # GET /quizzes/1
@@ -14,7 +14,8 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @quiz = Quiz.new
+    @quiz = Quiz.new(:user_id=>current_user.id)
+    @questions = @quiz.questions.new
   end
 
   # GET /quizzes/1/edit
@@ -25,6 +26,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
+    @quiz.user_id=current_user.id
 
     respond_to do |format|
       if @quiz.save
@@ -61,6 +63,8 @@ class QuizzesController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
@@ -69,6 +73,9 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :description)
+      params.require(:quiz).permit(
+          :title,:description, :user_id,
+          questions_attributes: [ :id, :question, :answer, :_destroy ]
+      )
     end
 end
