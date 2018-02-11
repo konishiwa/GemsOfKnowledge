@@ -1,0 +1,12 @@
+<div class="form-group">
+    <div class="box">
+      <div class="field">
+        <%= f.label 'Question: ' %>
+        <%= f.object.question %>
+      </div>
+      <div class="field">
+        <%= f.label :answer %>
+        <%= f.text_field :user_answer, id: :user_answer %>
+      </div>
+    </div>
+</div>

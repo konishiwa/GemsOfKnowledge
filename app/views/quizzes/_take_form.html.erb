@@ -1,0 +1,39 @@
+<%= form_for @quiz, :url => {:action => "grade", :method => "post"} do |form| %>
+  <% if quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+      <ul>
+      <% quiz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Title: " %>
+    <%= :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Description: " %>
+    <%= :description %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, id: :user_id  %>
+  </div>
+
+  <h3>Questions</h3>
+  <p>
+    <%= form.fields_for :questions do |f| %>
+      <%= render 'take_quiz_question_fields', f: f %>
+    <% end %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit "Grade Quiz" %>
+  </div>
+  <br/>
+<% end %>

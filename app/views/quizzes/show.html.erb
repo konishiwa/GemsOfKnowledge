@@ -13,10 +13,10 @@
   <% unless @quiz.questions.blank? %>
     <%= @quiz.questions.each do |q| %>
       <div>
-        Question: <%= q.question %>
+        <b>Question:</b> <%= q.question %>
       </div>
       <div>
-        Answer: <%= q.answer %>
+        <b>Answer:</b> <%= q.answer %>
       </div>
       <br/>
     <% end %>

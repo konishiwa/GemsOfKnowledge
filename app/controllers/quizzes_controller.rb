@@ -63,6 +63,22 @@ class QuizzesController < ApplicationController
     end
   end
 
+  # take a quiz
+  # /quizzes/1/take
+  def take
+    @quiz = Quiz.find(params[:quiz_id])
+    render :take #redundant...but here for clarity
+  end
+
+  # TODO: fix patch/post routing issue
+  def grade
+    #@quiz = Quiz.find(params[:quiz_id])
+    @new_quiz = Quiz.new
+
+    # TODO: logic to grade quiz from quiz/question model(s)
+
+    render :grade
+  end
 
 
   private
@@ -75,7 +91,7 @@ class QuizzesController < ApplicationController
     def quiz_params
       params.require(:quiz).permit(
           :title,:description, :user_id,
-          questions_attributes: [ :id, :question, :answer, :_destroy ]
+          questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer ]
       )
     end
 end

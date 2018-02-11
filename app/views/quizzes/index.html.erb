@@ -17,7 +17,7 @@
           <td><%= quiz.title %></td>
           <td><%= quiz.description %></td>
           <td><%= quiz.number_of_questions %></td>
-          <td><%= link_to 'Show', quiz %></td>
+          <td><%= link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take' %></td>
           <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
           <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
