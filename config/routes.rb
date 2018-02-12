@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   resources :quizzes do
     get 'take'
-    post 'grade'
+    patch 'grade' => "quizzes#grade"
   end
 
   resources :questions

@@ -70,14 +70,33 @@ class QuizzesController < ApplicationController
     render :take #redundant...but here for clarity
   end
 
-  # TODO: fix patch/post routing issue
+  # Note: this is currently 'hacked' to use the PATCH verb for routing
   def grade
-    #@quiz = Quiz.find(params[:quiz_id])
-    @new_quiz = Quiz.new
+    @quiz = Quiz.new(quiz_params)
 
-    # TODO: logic to grade quiz from quiz/question model(s)
+    #logic to grade quiz from quiz/question model(s)
+    # TODO: move logic into model?
+
+    total_questions = @quiz.number_of_questions
+    total_correct = 0
+
+    @quiz.questions.each do |q|
+      # p q.answer.upcase
+      # p q.user_answer.upcase
+      if q.answer.upcase == q.user_answer.upcase
+        total_correct += 1
+      end
+    end
+    # p total_correct
+    # p total_questions
+    # p total_correct.to_f/total_questions.to_f
+
+    @score = (total_correct.to_f/total_questions.to_f*100.0).round(2)
+
+    #@result = {"grade"=>grade.to_s}
 
     render :grade
+
   end
 
 
@@ -90,7 +109,7 @@ class QuizzesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
       params.require(:quiz).permit(
-          :title,:description, :user_id,
+          :title, :description, :user_id, :id,
           questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer ]
       )
     end
