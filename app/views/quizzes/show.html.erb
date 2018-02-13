@@ -1,29 +1,31 @@
-<p>
-  <strong>Title:</strong>
-  <%= @quiz.title %>
-</p>
+<div class="form-profile-div quiz-show">
+  <p>
+    <strong>Title:</strong>
+    <%= @quiz.title %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @quiz.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @quiz.description %>
+  </p>
 
-<h3>Questions</h3>
-<div>
-  <% unless @quiz.questions.blank? %>
-    <%= @quiz.questions.each do |q| %>
-      <div>
-        <b>Question:</b> <%= q.question %>
-      </div>
-      <div>
-        <b>Answer:</b> <%= q.answer %>
-      </div>
-      <br/>
+  <h3>Questions</h3>
+  <div>
+    <% unless @quiz.questions.blank? %>
+      <%= @quiz.questions.each do |q| %>
+        <div>
+          <b>Question:</b> <%= q.question %>
+        </div>
+        <div>
+          <b>Answer:</b> <%= q.answer %>
+        </div>
+        <br/>
+      <% end %>
+    <% else %>
+      <div>There are no questions in this quiz. You should add some.</div>
     <% end %>
-  <% else %>
-    <div>There are no questions in this quiz. You should add some.</div>
-  <% end %>
-</div>
+  </div>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+  <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+  <%= link_to 'Back', quizzes_path %>
+</div>
