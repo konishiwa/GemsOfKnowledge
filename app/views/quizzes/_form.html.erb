@@ -11,7 +11,7 @@
     });
 </script>
 
-<%= form_for @quiz do |form| %>
+<%= form_for @quiz, html: {class: 'form-group'} do |form| %>
   <% if quiz.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
@@ -26,12 +26,12 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :quiz_title %>
+    <%= form.text_field :title, id: :quiz_title, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :quiz_description %>
+    <%= form.text_area :description, id: :quiz_description, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -50,6 +50,6 @@
   </p>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
