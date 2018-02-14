@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: quiz_app
-  password: notsecure
-  host: localhost
+  username: bde10f6288e884 # quiz_app
+  password: d1d74b81 # notsecure
+  host: us-cdbr-iron-east-05.cleardb.net # localhost
 
 development:
   <<: *default
-  database: quiz_app_development
+  database: heroku_76476b4c8f71d41 #quiz_app_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: quiz_app_test
+  database: heroku_76476b4c8f71d41
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: quiz_app_production
+  database: heroku_76476b4c8f71d41 # quiz_app_production
   username: quiz_app
   password: <%= ENV['UNTITLED_DATABASE_PASSWORD'] %>
