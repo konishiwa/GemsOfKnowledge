@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 
+  gem 'simplecov'
   # update without restart
   #gem 'shotgun'
   #gem 'sinatra'
