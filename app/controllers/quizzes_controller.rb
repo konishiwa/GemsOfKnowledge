@@ -81,9 +81,7 @@ class QuizzesController < ApplicationController
     total_correct = 0
 
     @quiz.questions.each do |q|
-      # p q.answer.upcase
-      # p q.user_answer.upcase
-      if q.answer.upcase == q.user_answer.upcase
+      if q.answer.strip.casecmp(q.user_answer.strip).zero?
         total_correct += 1
       end
     end
