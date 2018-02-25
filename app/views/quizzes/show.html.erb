@@ -11,6 +11,7 @@
 
   <h3>Questions</h3>
   <div>
+
     <% unless @quiz.questions.blank? %>
       <% @quiz.questions.each do |q| %>
         <div>
@@ -21,6 +22,7 @@
         </div>
         <br/>
       <% end %>
+
     <% else %>
       <div>There are no questions in this quiz. You should add some.</div>
     <% end %>
