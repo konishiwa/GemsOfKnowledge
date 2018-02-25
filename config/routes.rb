@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     patch 'grade' => 'quizzes#grade'
   end
 
+  resources :about do
+    get 'about'
+  end
+
   # resources :questions # DO NOT make questions individually accessible via url
 
   devise_for :users
