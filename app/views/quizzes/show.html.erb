@@ -12,7 +12,7 @@
   <h3>Questions</h3>
   <div>
     <% unless @quiz.questions.blank? %>
-      <%= @quiz.questions.each do |q| %>
+      <% @quiz.questions.each do |q| %>
         <div>
           <b>Question:</b> <%= q.question %>
         </div>
