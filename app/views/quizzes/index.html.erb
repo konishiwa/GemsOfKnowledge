@@ -21,7 +21,10 @@
           <td><%= quiz.number_of_questions %></td>
           <td><%= link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take', class: 'btn btn-success' %></td>
           <td><%= link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary'%></td>
-          <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'Delete', quiz, method: :delete,
+                          data: { confirm: 'Are you sure you would like to delete quiz: ' +
+                              quiz.title + '?' + ' Deleted quizzes cannot be recovered.'},
+                          class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
