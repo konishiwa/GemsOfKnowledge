@@ -10,4 +10,4 @@ Our team's UI application for SWE632 at GMU (Spring 2018). It is a quiz applicat
 
 * Database initialization: run "rake db:migrate"
 
-* How to run the test suite
+* **<to add at some point>** How to run the test suite
