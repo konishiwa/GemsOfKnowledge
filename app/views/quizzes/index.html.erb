@@ -9,6 +9,7 @@
         <th>Title</th>
         <th>Description</th>
         <th># Questions</th>
+        <th>Show Answers?</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -19,6 +20,8 @@
           <td><%= quiz.title %></td>
           <td><%= quiz.description %></td>
           <td><%= quiz.number_of_questions %></td>
+          <td><% if quiz.show_answers? %>Yes<% else %>No<% end %></td>
+
           <td><%= link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take', class: 'btn btn-success' %></td>
           <td><%= link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary'%></td>
           <td><%= link_to 'Delete', quiz, method: :delete,

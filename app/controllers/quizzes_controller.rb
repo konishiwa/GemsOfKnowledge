@@ -73,15 +73,16 @@ class QuizzesController < ApplicationController
   # Note: this is currently 'hacked' to use the PATCH verb for routing
   def grade
     @quiz = Quiz.new(quiz_params)
+    @quiz.show_answers = Quiz.find(quiz_params[:id]).show_answers # add value back in
 
     #logic to grade quiz from quiz/question model(s)
-    # TODO: move logic into model?
+    # TODO: move logic into model? -- moved question correct? logic into Question model
 
     total_questions = @quiz.number_of_questions
     total_correct = 0
 
     @quiz.questions.each do |q|
-      if q.answer.strip.casecmp(q.user_answer.strip).zero?
+      if q.correct?
         total_correct += 1
       end
     end
@@ -107,7 +108,7 @@ class QuizzesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
       params.require(:quiz).permit(
-          :title, :description, :user_id, :id,
+          :title, :description, :user_id, :id, :show_answers,
           questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer ]
       )
     end

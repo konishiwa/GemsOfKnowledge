@@ -9,6 +9,11 @@
     <%= @quiz.description %>
   </p>
 
+  <p>
+    <strong>Show correct answers when displaying score to user?</strong>
+    <% if @quiz.show_answers? %>Yes<% else %>No<% end %>
+  </p>
+
   <h3>Questions</h3>
   <div>
 
@@ -29,5 +34,5 @@
   </div>
 
   <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-  <%= link_to 'Back', quizzes_path %>
+  <%= link_to 'Back to Quizzes', quizzes_path %>
 </div>

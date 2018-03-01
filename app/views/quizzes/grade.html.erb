@@ -1,5 +1,30 @@
-<div class="text-center">
-  You scored <b><%=@score %>%</b>.<br />
-  <%= link_to 'Back', quizzes_path %>
-</div>
+<div class="quiz-form form-profile-div">
+  <div class="text-center">
+  You scored <b><%=@score %>%</b>.
+  </div>
 
+  <br>
+
+  <% if @quiz.show_answers? %>
+    <ol>
+    <% @quiz.questions.each do |q| %>
+      <li><b><%= q.question %></b>
+        <ul>
+          <li>Correct answer: <b><%= q.answer %></b></li>
+          <li>Your answer:
+            <div class="display-inline font-weight-bold
+              <% if q.correct? %>correct<% else %>incorrect<% end %>">
+              <%= q.user_answer %>
+            </div>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+    </ol>
+  <% else %>
+    <p><i>Display of answers disabled for this quiz.</i></p>
+  <% end %>
+  <p>
+    <%= link_to 'Back to Quizzes', quizzes_path %>
+  </p>
+</div>
