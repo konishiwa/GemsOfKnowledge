@@ -14,6 +14,13 @@
       | Yes
     - else
       | No
+  p
+    strong
+      | Quiz viewable and can be taken by anyone (public)?
+    - if @quiz.public?
+      | Yes
+    - else
+      | No
   h3
     | Questions
   div

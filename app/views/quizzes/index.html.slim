@@ -13,6 +13,8 @@
             | # Questions
           th
             | Show Answers?
+          th
+            | Public Quiz?
           th[colspan="3"]
       tbody
         - @quizzes.each do |quiz|
@@ -29,14 +31,23 @@
               - else
                 | No
             td
+              - if quiz.public?
+                | Yes
+              - else
+                | No
+            td
               = link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take', class: 'btn btn-success'
-            td
-              = link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary'
-            td
-              = link_to 'Delete', quiz, method: :delete,
-              data: { confirm: 'Are you sure you would like to delete quiz: ' + \
-              quiz.title + '?' + ' Deleted quizzes cannot be recovered.'},
-              class: 'btn btn-danger'
+            - if quiz.belongs_to_user(current_user.id)
+              td
+                = link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary'
+              td
+                = link_to 'Delete', quiz, method: :delete,
+                data: { confirm: 'Are you sure you would like to delete quiz: ' + \
+                quiz.title + '?' + ' Deleted quizzes cannot be recovered.'},
+                class: 'btn btn-danger'
+            - else
+              td
+              td
   - else
     .instruction
       | There are no quizzes. Create one!

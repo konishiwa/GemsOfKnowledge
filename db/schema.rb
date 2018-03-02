@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301002505) do
+ActiveRecord::Schema.define(version: 20180302031245) do
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "question"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180301002505) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.boolean "show_answers"
+    t.boolean "public", default: false, null: false
     t.index ["user_id"], name: "index_user_id"
   end
 
