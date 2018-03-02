@@ -1,0 +1,36 @@
+.form-profile-div.quiz-show
+  p
+    strong
+      | Title:
+    = @quiz.title
+  p
+    strong
+      | Description:
+    = @quiz.description
+  p
+    strong
+      | Show correct answers when displaying score to user?
+    - if @quiz.show_answers?
+      | Yes
+    - else
+      | No
+  h3
+    | Questions
+  div
+    - unless @quiz.questions.blank?
+      - @quiz.questions.each do |q|
+        div
+          b
+            | Question:
+          = q.question
+        div
+          b
+            | Answer:
+          = q.answer
+        br
+    - else
+      div
+        | There are no questions in this quiz. You should add some.
+  = link_to 'Edit', edit_quiz_path(@quiz)
+  |  | 
+  = link_to 'Back to Quizzes', quizzes_path

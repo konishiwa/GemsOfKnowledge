@@ -1,0 +1,33 @@
+.quiz-form.form-profile-div
+  .text-center
+    |  You scored 
+    b
+      =@score
+      | %
+    | . 
+  br
+  - if @quiz.show_answers?
+    ol
+      - @quiz.questions.each do |q|
+        li
+          b
+            = q.question
+          ul
+            li
+              | Correct answer: 
+              b
+                = q.answer
+            li
+              | Your answer: <div class="display-inline font-weight-bold 
+              - if q.correct?
+                | correct
+              - else
+                | incorrect
+              | "> 
+              = q.user_answer
+  - else
+    p
+      i
+        | Display of answers disabled for this quiz.
+  p
+    = link_to 'Back to Quizzes', quizzes_path
