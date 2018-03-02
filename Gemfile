@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'sprockets-rails', '~> 3.2.1'
+gem 'slim-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

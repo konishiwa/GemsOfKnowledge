@@ -1,0 +1,8 @@
+.form-group
+  .box
+    .field
+      = f.label 'Question: '
+      = f.object.question
+    .field
+      = f.label :answer
+      = f.text_field :user_answer, id: :user_answer, class: 'form-control'

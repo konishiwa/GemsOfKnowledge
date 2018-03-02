@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Gems of Knowledge : A Quiz App
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .text-center
+      h1
+        a.title-link href="/"  Gems of Knowledge : A Quiz App
+      ul
+        - if user_signed_in?
+          | Logged in as
+          strong= current_user.email
+          |  (
+          = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+          | )
+          br
+          = link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link'
+        - else
+          = link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'
+          | &nbsp;|&nbsp;#{link_to 'Login', new_user_session_path, :class => 'navbar-link'}
+        | &nbsp;| #{link_to 'About', about_path, :class => 'navbar-link'}
+
+      p.notice= notice
+      p.alert= alert
+    div
+      = yield
+    br
+    footer.text-center.small
+      | SWE632 Project App
+      br
+      | © Spring 2018 Ryan Ammons, Haruka Konishi
+      br
+      i
+        | Hosting by
+        a href="https://www.ammonsdatasolutions.com" target="_blank"  Ammons Data Solutions

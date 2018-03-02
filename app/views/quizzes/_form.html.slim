@@ -1,0 +1,32 @@
+script
+  |  $('[data-form-prepend]').click( function(e) { var obj = $( $(this).attr('data-form-prepend') ); obj.find('input, select, textarea').each( function() { $(this).attr( 'name', function() { return $(this).attr('name').replace( 'new_record', (new Date()).getTime() ); }); }); obj.insertBefore( this ); return false; }); 
+= form_for @quiz, html: {class: 'form-group'} do |form|
+  - if quiz.errors.any?
+    #error_explanation
+      h2
+        = pluralize(quiz.errors.count, "error")
+        |  prohibited this quiz from being saved:
+      ul
+        - quiz.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :title
+    = form.text_field :title, id: :quiz_title, class: 'form-control'
+  .field
+    = form.label :description
+    = form.text_area :description, id: :quiz_description, class: 'form-control'
+  .field
+    = form.label :show_answers, 'Show correct answers when displaying score to user?'
+    = form.check_box :show_answers, id: :quiz_show_answers, class: 'form-control'
+  .field
+    = form.hidden_field :user_id, id: :user_id
+  h3
+    | Questions
+  p
+    = form.fields_for :questions do |f|
+      = render 'question_fields', f: f
+  p
+    = link_to_add_fields('Add new question', form, :questions)
+  .actions
+    = form.submit class: 'btn btn-primary'

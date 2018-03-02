@@ -1,0 +1,11 @@
+.form-group
+  .box
+    .field
+      = f.label :question
+      = f.text_field :question, id: :question, class: 'form-control'
+    .field
+      = f.label :answer
+      = f.text_field :answer, id: :answer, class: 'form-control'
+    div[style="display: inline"]
+      = f.check_box :_destroy
+      = f.label :_destroy
