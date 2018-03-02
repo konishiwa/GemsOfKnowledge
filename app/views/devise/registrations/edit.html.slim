@@ -17,15 +17,15 @@
       br
       = f.password_field :current_password, autocomplete: "off"
     .field
-      = f.label :new_password
+      = f.label :password
       br
-      = f.password_field :new_password, autocomplete: "off"
+      = f.password_field :password, autocomplete: "off"
       - if @minimum_password_length
         br
     .field
-      = f.label :new_password_confirmation
+      = f.label :password_confirmation
       br
-      = f.password_field :new_password_confirmation, autocomplete: "off"
+      = f.password_field :password_confirmation, autocomplete: "off"
     .actions
       = f.submit "Update", class: 'btn btn-primary'
   br
