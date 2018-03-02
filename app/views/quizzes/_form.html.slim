@@ -1,5 +1,6 @@
-script
-  |  $('[data-form-prepend]').click( function(e) { var obj = $( $(this).attr('data-form-prepend') ); obj.find('input, select, textarea').each( function() { $(this).attr( 'name', function() { return $(this).attr('name').replace( 'new_record', (new Date()).getTime() ); }); }); obj.insertBefore( this ); return false; }); 
+javascript:
+  $('[data-form-prepend]').click( function(e) { var obj = $( $(this).attr('data-form-prepend') ); obj.find('input, select, textarea').each( function() { $(this).attr( 'name', function() { return $(this).attr('name').replace( 'new_record', (new Date()).getTime() ); }); }); obj.insertBefore( this ); return false; });
+
 = form_for @quiz, html: {class: 'form-group'} do |form|
   - if quiz.errors.any?
     #error_explanation
@@ -19,6 +20,10 @@ script
   .field
     = form.label :show_answers, 'Show correct answers when displaying score to user?'
     = form.check_box :show_answers, id: :quiz_show_answers, class: 'form-control'
+  .field
+    = form.label :public, 'Allow anyone to take quiz (make it public)?'
+    = form.check_box :public, id: :quiz_public, class: 'form-control'
+
   .field
     = form.hidden_field :user_id, id: :user_id
   h3

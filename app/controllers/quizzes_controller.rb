@@ -4,7 +4,8 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.user_quizzes(current_user.id)
+    #@quizzes = Quiz.user_quizzes(current_user.id)
+    @quizzes = Quiz.viewable_quizzes(current_user.id)
   end
 
   # GET /quizzes/1
@@ -108,7 +109,7 @@ class QuizzesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
       params.require(:quiz).permit(
-          :title, :description, :user_id, :id, :show_answers,
+          :title, :description, :user_id, :id, :show_answers, :public,
           questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer ]
       )
     end

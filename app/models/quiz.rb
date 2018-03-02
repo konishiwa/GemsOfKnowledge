@@ -11,9 +11,17 @@ class Quiz < ApplicationRecord
     return Quiz.where(user_id: uid)
   end
 
+  def self.viewable_quizzes(uid)
+    return Quiz.where(user_id: uid).or(Quiz.where(public: true))
+  end
+
   # instance methods
   def number_of_questions
     condition = 'quiz_id=' + id.to_s
     return Question.where(condition).count
+  end
+
+  def belongs_to_user(uid)
+    return self.user_id==uid
   end
 end
