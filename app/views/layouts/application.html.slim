@@ -8,8 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .text-center
-      h1
-        a.title-link href="/"  Gems of Knowledge : A Quiz App
+      a.title-link href="/"
+        = image_tag "logo.jpg", alt: "Gems of Knowledge : A Quiz App", width: 325
       ul
         - if user_signed_in?
           | Logged in as&nbsp;
