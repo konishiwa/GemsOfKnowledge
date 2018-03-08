@@ -32,6 +32,10 @@
   display: inline;
 }
 
+ul.menu { /*fix for indented main menu block*/
+  padding-left: 0;
+}
+
 .title-link:hover {
   color: #f00;
   text-decoration: underline;

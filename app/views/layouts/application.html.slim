@@ -10,7 +10,7 @@ html
     .text-center
       a.title-link href="/"
         = image_tag "logo.jpg", alt: "Gems of Knowledge : A Quiz App", width: 325
-      ul
+      ul.menu
         - if user_signed_in?
           | Logged in as&nbsp;
           strong= current_user.email
