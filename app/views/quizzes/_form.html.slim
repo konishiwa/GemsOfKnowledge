@@ -1,5 +1,16 @@
 javascript:
-  $('[data-form-prepend]').click( function(e) { var obj = $( $(this).attr('data-form-prepend') ); obj.find('input, select, textarea').each( function() { $(this).attr( 'name', function() { return $(this).attr('name').replace( 'new_record', (new Date()).getTime() ); }); }); obj.insertBefore( this ); return false; });
+  $('[data-form-prepend]').click( function(e) {
+      var obj = $( $(this).attr('data-form-prepend') );
+      obj.find('input, select, textarea').each( function() {
+          $(this).attr( 'name', function() {
+              return $(this).attr('name').replace( 'new_record', (new Date()).getTime() );
+          });
+      });
+      obj.insertBefore( this );
+      return false;
+  });
+
+/! TODO: add javascript handling for question_type changes
 
 = form_for @quiz, html: {class: 'form-group'} do |form|
   - if quiz.errors.any?
@@ -23,6 +34,8 @@ javascript:
   .field
     = form.label :public, 'Allow anyone to take quiz (make it public)?'
     = form.check_box :public, id: :quiz_public, class: 'form-control'
+
+  /! TODO: add partials for all question_types
 
   .field
     = form.hidden_field :user_id, id: :user_id

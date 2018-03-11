@@ -6,7 +6,7 @@ class Quiz < ApplicationRecord
 
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 
-  # static methods
+  ### static methods ###
   def self.user_quizzes(uid)
     return Quiz.where(user_id: uid)
   end
@@ -15,7 +15,7 @@ class Quiz < ApplicationRecord
     return Quiz.where(user_id: uid).or(Quiz.where(public: true))
   end
 
-  # instance methods
+  ### instance methods ###
   def number_of_questions
     condition = 'quiz_id=' + id.to_s
     return Question.where(condition).count

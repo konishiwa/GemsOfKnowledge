@@ -1,6 +1,9 @@
 .form-group
   .box
     .field
+      = f.label :question_type
+      = f.select :question_type, Question.question_types.keys, id: :question_type, class: 'form-control'
+    .field
       = f.label :question
       = f.text_field :question, id: :question, class: 'form-control'
     .field

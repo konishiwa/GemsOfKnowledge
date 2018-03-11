@@ -9,6 +9,9 @@
           li
             = message
   .field
+    = form.label :question_type
+    = form.select :question_type, Question.question_types.keys
+  .field
     = form.label :question
     = form.text_field :question, id: :question_question
   .field
