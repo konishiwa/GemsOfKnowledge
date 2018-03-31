@@ -21,6 +21,16 @@ class Quiz < ApplicationRecord
     return Question.where(condition).count
   end
 
+  def number_questions_correct
+    total_correct = 0
+    questions.each do |q|
+      if q.correct?
+        total_correct += 1
+      end
+    end
+    return total_correct
+  end
+
   def belongs_to_user(uid)
     return self.user_id==uid
   end

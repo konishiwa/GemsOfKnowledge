@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    #@quizzes = Quiz.user_quizzes(current_user.id)
+    # @quizzes = Quiz.user_quizzes(current_user.id)
     @quizzes = Quiz.viewable_quizzes(current_user.id)
   end
 
@@ -15,7 +15,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @quiz = Quiz.new(:user_id=>current_user.id)
+    @quiz = Quiz.new(:user_id => current_user.id)
     @questions = @quiz.questions.new
   end
 
@@ -27,7 +27,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-    @quiz.user_id=current_user.id
+    @quiz.user_id = current_user.id
 
     respond_to do |format|
       if @quiz.save
@@ -68,7 +68,7 @@ class QuizzesController < ApplicationController
   # /quizzes/1/take
   def take
     @quiz = Quiz.find(params[:quiz_id])
-    render :take #redundant...but here for clarity
+    render :take # redundant...but here for clarity
   end
 
   # Note: this is currently 'hacked' to use the PATCH verb for routing
@@ -76,24 +76,10 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
     @quiz.show_answers = Quiz.find(quiz_params[:id]).show_answers # add value back in
 
-    #logic to grade quiz from quiz/question model(s)
-    # TODO: move logic into model? -- moved question correct? logic into Question model
-
     total_questions = @quiz.number_of_questions
-    total_correct = 0
+    total_correct = @quiz.number_questions_correct
 
-    @quiz.questions.each do |q|
-      if q.correct?
-        total_correct += 1
-      end
-    end
-    # p total_correct
-    # p total_questions
-    # p total_correct.to_f/total_questions.to_f
-
-    @score = (total_correct.to_f/total_questions.to_f*100.0).round(2)
-
-    #@result = {"grade"=>grade.to_s}
+    @score = (total_correct.to_f / total_questions.to_f * 100.0).round(2)
 
     render :grade
 
@@ -101,16 +87,17 @@ class QuizzesController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quiz
-      @quiz = Quiz.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def quiz_params
-      params.require(:quiz).permit(
-          :title, :description, :user_id, :id, :show_answers, :public,
-          questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer, :question_type ]
-      )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def quiz_params
+    params.require(:quiz).permit(
+      :title, :description, :user_id, :id, :show_answers, :public,
+      questions_attributes: [ :id, :question, :answer, :_destroy, :user_answer, :question_type ]
+    )
+  end
 end

@@ -1,8 +1,15 @@
 .quiz-form.form-profile-div
   .text-center
-    |  You scored 
+    | You correctly answered
     b
-      =@score
+      = ' ' + @quiz.number_questions_correct.to_s + ' '
+    | out of
+    b
+      = ' ' + pluralize(@quiz.number_of_questions,'question') + ' '
+    br
+    | for a score of
+    b
+      = ' ' + @score.to_s
       | %
     | . 
   br
