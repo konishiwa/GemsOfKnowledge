@@ -6,6 +6,10 @@ p
   = @question.question
 p
   strong
+    | Hint:
+  = @question.hint
+p
+  strong
     | Answer:
   = @question.answer
 = link_to 'Edit', edit_question_path(@question)

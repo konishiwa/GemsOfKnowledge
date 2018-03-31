@@ -17,5 +17,11 @@
   .field
     = form.label :answer
     = form.text_field :answer, id: :question_answer
+  .field
+    = f.label :hint, 'Hint/tip to user (optional)'
+    = f.text_field :hint, id: :hint, class: 'form-control'
+  div[style="display: inline"]
+    = f.check_box :_destroy
+    = f.label :_destroy, 'Delete question'
   .actions
     = form.submit

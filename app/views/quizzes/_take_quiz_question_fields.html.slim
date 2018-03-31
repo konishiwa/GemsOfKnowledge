@@ -1,8 +1,15 @@
 .form-group
   .box
     .field
-      = f.label 'Question: '
-      = f.object.question
+      b
+        = f.label 'Question: '
+      = ' ' + f.object.question
+    - unless f.object.hint == ''
+      .field.font-italic
+        b
+          = f.label 'Hint: '
+        = ' ' + f.object.hint
     .field
-      = f.label :answer
+      b
+        = f.label :answer
       = f.text_field :user_answer, id: :user_answer, class: 'form-control'

@@ -1,5 +1,7 @@
 .form-profile-div.quiz-form
-  h1
-    | Taking Quiz
+  h2
+    | Taking Quiz "
+    = @quiz.title
+    | "
   = render 'take_form', quiz: @quiz
   = link_to 'Back to Quizzes', quizzes_path

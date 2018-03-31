@@ -30,14 +30,23 @@
           b
             | Question:
           = q.question
+        - unless q.hint == ''
+          .field.font-italic
+            b
+              | Hint:
+            = ' ' + q.hint
         div
           b
             | Answer:
           = q.answer
         br
     - else
-      div
+      div.font-italic
         | There are no questions in this quiz. You should add some.
   = link_to 'Edit', edit_quiz_path(@quiz)
   |  | 
-  = link_to 'Back to Quizzes', quizzes_path
+  b
+    = link_to 'Back to Quizzes', quizzes_path
+  |  |
+  b
+    = link_to 'Take this quiz', "/quizzes/#{@quiz.id}/take"
