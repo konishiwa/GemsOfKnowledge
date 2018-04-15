@@ -1,26 +1,26 @@
 .form-profile-div.quiz-show
   p
     strong
-      | Title:
+      | Title:&nbsp;
     = @quiz.title
   p
     strong
-      | Description:
+      | Description:&nbsp;
     = @quiz.description
   p
     strong
       | Show correct answers when displaying score to user?
     - if @quiz.show_answers?
-      | Yes
+      |  Yes
     - else
-      | No
+      |  No
   p
     strong
       | Quiz viewable and can be taken by anyone (public)?
     - if @quiz.public?
-      | Yes
+      |  Yes
     - else
-      | No
+      |  No
   h3
     | Questions
   div
@@ -28,7 +28,7 @@
       - @quiz.questions.each do |q|
         div
           b
-            | Question:
+            | Question:&nbsp;
           = q.question
         - unless q.hint == ''
           .field.font-italic
@@ -37,7 +37,7 @@
             = ' ' + q.hint
         div
           b
-            | Answer:
+            | Answer:&nbsp;
           = q.answer
         br
     - else
