@@ -2,4 +2,5 @@
   h2
     | New Quiz
   = render 'form', quiz: @quiz
-  = link_to 'Back', quizzes_path
+  = link_to 'Back', quizzes_path,
+          data: {confirm: "Are you sure? If you go back your changes will not be saved and your quiz will not be created."}, method: :delete, class: 'btn btn-danger'

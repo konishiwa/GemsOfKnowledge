@@ -36,15 +36,18 @@
               - else
                 | No
             td
-              = link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take', class: 'btn btn-success'
+              = link_to 'Take', 'quizzes/'+quiz.id.to_s+'/take', class: 'btn btn-success', id: 'take_quiz'
+              span id = "take_text" class = "text" | Take your quiz!
             - if quiz.belongs_to_user(current_user.id)
               td
-                = link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary'
+                = link_to 'Edit', edit_quiz_path(quiz), class: 'btn btn-secondary', id: 'edit_quiz'
+                span id = "edit_text" class = "text"| Edit your quiz!
               td
-                = link_to 'Delete', quiz, method: :delete,
+                = link_to 'Delete', quiz, method: :delete, id: 'delete_quiz',
                 data: { confirm: 'Are you sure you would like to delete quiz: ' + \
                 quiz.title + '?' + ' Deleted quizzes cannot be recovered.'},
                 class: 'btn btn-danger'
+                span id = "delete_text" class = "text" | Delete your quiz!
             - else
               td
               td
@@ -52,4 +55,35 @@
     .instruction
       | There are no quizzes. Create one!
   br
-  = link_to 'New Quiz', new_quiz_path, id: :new_question, class: 'btn btn-primary'
+  = link_to 'New Quiz', new_quiz_path, id: :new_question, class: 'btn btn-primary', id: 'create_quiz'
+  span id = "new_text" class = "text"| Create your quiz!
+
+style |
+ css:
+
+   .text {
+     position: relative;
+     display: inline-block;
+     border-bottom: 1px dotted black;
+   }
+
+   .text {
+     visibility: hidden;
+     width: 120px;
+     background-color: black;
+     color: #fff;
+     text-align: center;
+     border-radius: 6px;
+     padding: 5px 0;
+
+     /* Position the tooltip */
+     position: absolute;
+     z-index: 1;
+     bottom: 100%;
+     left: 50%;
+     margin-left: -60px;
+   }
+
+   .text:hover {
+     visibility: visible !important;
+   }

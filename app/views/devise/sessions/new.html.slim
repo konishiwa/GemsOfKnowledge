@@ -9,7 +9,9 @@
     .field
       = f.label :password
       br
-      = f.password_field :password, autocomplete: "off"
+        //not working atm: needs to be fixed
+      = f.password_field :password, autocomplete: "off", onkeypress:"capsCheck(event,this);"
+        div id="capsWarningDiv" style="visibility:hidden" | Caps Lock is on.
     - if devise_mapping.rememberable?
       .field
         = f.check_box :remember_me
@@ -18,3 +20,13 @@
       = f.submit "Log in", class: 'btn-primary'
   br
   = render "devise/shared/links"
+
+  /*javascript:
+      function capsCheck(e, obj) {
+          kc = e.keyCode ? e.keyCode : e.which;
+          sk = e.shiftKey ? e.shiftKey : ((kc == 16) ? true : false);
+          if (((kc >= 65 && kc <= 90) && !sk) || ((kc >= 97 && kc <= 122) && sk)) {
+              document.getElementById('#' + obj.id).style.visibility = 'visible';
+          }
+          else document.getElementById('#' + obj.id).style.visibility = 'hidden';
+      }*/
