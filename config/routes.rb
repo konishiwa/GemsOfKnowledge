@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#index'
 
+  get 'tutorial' => 'tutorial#index'
+
   # resources :questions # DO NOT make questions individually accessible via url
 
   devise_for :users

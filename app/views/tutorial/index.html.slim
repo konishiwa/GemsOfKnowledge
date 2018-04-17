@@ -2,19 +2,27 @@
   h1
     | Welcome!
 
-  img src="icons.png"/
+  = image_tag "icons.png", alt: "process icons", width:400
 
   p
-    | Step 1: Create a quiz by clicking the New Quiz button
+    b
+      | Step 1:
+    |  Create a quiz by clicking the New Quiz button
+  p
+    b
+      | Step 2:
+    |  Take the quiz
+  p
+    b
+      | Step 3:
+    |  Edit your quiz
+  p
+    b
+      | Step 4:
+    |  Keep making an taking quizzes
+  p
+    b
+      | Step 5:
+    |  Get an A!
 
-  p | Step 2: Take the quiz
-
-  p | Step 3: Edit your quiz
-
-  p | Step 4: Keep making an taking quizzes
-
-  p | Step 5: Get an A!
-
-  = link_to 'I\'\m Ready!', quizzes_path
-
-
+  = link_to 'I\'m Ready!', quizzes_path

@@ -52,6 +52,10 @@
   - else
     .instruction
       | There are no quizzes. Create one!
+      br
+      .font-italic
+        = link_to 'Click here for a tutorial', 'tutorial#index'
+        |   on how to get started!
   br
   = link_to 'New Quiz', new_quiz_path, id: :new_question, class: 'btn btn-primary', id: 'create_quiz'
   span id = "new_text" class = "text"| Create your quiz!
