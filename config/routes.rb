@@ -11,9 +11,12 @@ Rails.application.routes.draw do
 
   get 'tutorial' => 'tutorial#index'
 
-  # resources :questions # DO NOT make questions individually accessible via url
-
   devise_for :users
+
+  #if Rails.env.production?
+  get '404' => 'application#page_not_found'
+  #end
+  match '*a' => 'application#page_not_found', via: [:get, :post]
 
   # NOTES:
   # Use Rails.application.reload_routes! in paused debug console to force routes to reload
