@@ -13,11 +13,13 @@
           = @minimum_password_length
           |  characters minimum)
         br
-      = f.password_field :password, autofocus: true, autocomplete: "off"
+      div.detectCapslocks data-message="Caps Lock is on."
+        = f.password_field :password, autofocus: true, autocomplete: "off", class: "detectCapslocks"
     .field
       = f.label :password_confirmation, "Confirm new password"
       br
-      = f.password_field :password_confirmation, autocomplete: "off"
+      div.detectCapslocks data-message="Caps Lock is on."
+        = f.password_field :password_confirmation, autocomplete: "off", class: "detectCapslocks"
     .actions
       = f.submit "Change my password"
   = render "devise/shared/links"

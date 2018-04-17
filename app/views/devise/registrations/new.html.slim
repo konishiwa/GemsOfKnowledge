@@ -20,15 +20,17 @@
         span.input-group-append
           span.fa.fa-question-circle.fa-2x
     .input-group
-      = f.password_field :password, :placeholder => 'Password'
-      a[href="#" data-toggle="password-help" data-placement="right" title="Password must be at least 6 characters long"]
-        span.input-group-append
-          span.fa.fa-question-circle.fa-2x
+      div.detectCapslocks data-message="Caps Lock is on."
+        = f.password_field :password, :placeholder => 'Password', class: "detectCapslocks"
+        a[href="#" data-toggle="password-help" data-placement="right" title="Password must be at least 6 characters long"]
+          span.input-group-append
+            span.fa.fa-question-circle.fa-2x
     .input-group
-      = f.password_field :password_confirmation, :placeholder => 'Password confirmation'
-      a[href="#" data-toggle="password-conf-help" data-placement="right" title="Confirmation password must match the password"]
-        span.input-group-append
-          span.fa.fa-question-circle.fa-2x
+      div.detectCapslocks data-message="Caps Lock is on."
+        = f.password_field :password_confirmation, :placeholder => 'Password confirmation', class: "detectCapslocks"
+        a[href="#" data-toggle="password-conf-help" data-placement="right" title="Confirmation password must match the password"]
+          span.input-group-append
+            span.fa.fa-question-circle.fa-2x
     = f.submit "Sign up", :class=>'btn btn-primary'
   = render "devise/shared/links"
 
