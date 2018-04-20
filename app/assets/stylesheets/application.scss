@@ -28,6 +28,18 @@
   text-decoration: none;
 }
 
+.image-link {
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
+a img, a:hover img{
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
 .display-inline{
   display: inline;
 }
