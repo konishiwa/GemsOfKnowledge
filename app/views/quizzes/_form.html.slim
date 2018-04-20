@@ -32,10 +32,10 @@ javascript:
     = form.text_area :description, id: :quiz_description, class: 'form-control'
   .field
     = form.label :show_answers, 'Show correct answers when displaying score to user?'
-    = form.check_box :show_answers, id: :quiz_show_answers, class: 'form-control'
+    = form.check_box :show_answers, id: :quiz_show_answers, class: 'form-control checkbox-width'
   .field
     = form.label :public, 'Allow anyone to take quiz (make it public)?'
-    = form.check_box :public, id: :quiz_public, class: 'form-control'
+    = form.check_box :public, id: :quiz_public, class: 'form-control checkbox-width'
 
   /! TODO: add partials for all question_types
 
