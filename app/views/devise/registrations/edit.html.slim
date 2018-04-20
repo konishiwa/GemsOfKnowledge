@@ -23,7 +23,6 @@
       div.detectCapslocks data-message="Caps Lock is on."
         = f.password_field :password, autocomplete: "off", class: "detectCapslocks", data: { toggle: 'tooltip', placement: 'top', title: 'Enter a new password!' }
       - if @minimum_password_length
-        br
     .field
       = f.label :password_confirmation
       br
